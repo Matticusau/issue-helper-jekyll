@@ -1,0 +1,29 @@
+name: 'Issue Helper (Jekyll)'
+description: 'Powerful Issue automation - auto assignee by Jekyll article author'
+author: 'MatticusAu'
+inputs:
+  repo-token:
+    description: 'The GITHUB_TOKEN secret to use with authenticating. If you require additional permissions use a PAT stored as a secret on your repo.'
+    required: true
+  enable-frontmatter:
+    description: 'Set to true to enable assignees to be set from owner in YAML front matter'
+    required: false
+    default: 'false'
+  frontmatter-authorkey:
+    description: 'The key in the YAML front matter to define the article author(s), who will be assigned as reviewers'
+    default: 'author'
+    required: false
+  frontmatter-githubuserfromauthorfile:
+    description: 'Enables the lookup of the author from the Jekyll style Author YAML file'
+    default: 'false'
+    required: false
+  frontmatter-authorfilepath:
+    description: 'Provides the ability to configure the path to the Jekyll authors YAML file to use in lookup'
+    default: 'docs\_data\authors.yml'
+    required: false
+runs:
+  using: 'node12'
+  main: 'lib/index.js'
+branding:
+  icon: git-merge
+  color: green
